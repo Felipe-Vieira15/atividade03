@@ -1,4 +1,8 @@
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Curso {
     
@@ -9,15 +13,11 @@ public class Curso {
 
     Professor professor;
 
-    static ArrayList<Curso> cursos = new ArrayList<>();
-
     public Curso(int idCurso, String nomeCurso, int carga_horaria, Professor professor) {
         this.idCurso = idCurso;
         this.nomeCurso = nomeCurso;
         this.carga_horaria = carga_horaria;
         this.professor = professor;
-
-        cursos.add(this);
     }
 
     public Curso(int idCurso, String nomeCurso, int carga_horaria, int idProfessor) {
@@ -26,34 +26,23 @@ public class Curso {
         this.carga_horaria = carga_horaria;
         this.idProfessor = idProfessor;
 
-        cursos.add(this);
-    }
-
-    static void verificaid(int idCurso) throws Exception {
-        for (Curso curso : cursos) {
-            if (curso.idCurso == idCurso) {
-                return;
-            }
-        }
-        throw new Exception("Curso não encontrado");
     }
 
     static Curso buscaCurso(int idCurso) {
-        for (Curso curso : cursos) {
-            if (curso.idCurso == idCurso) {
-                return curso;
-            }
-        }
-        return null;
+        final String url = "jdbc:mysql://localhost:3306/sistemaescola";
+        final String user = "root";
+        final String password = ""; 
+        Curso curso = null;
+        
     }
 
-    static int contarAlunosPorCurso(int idCurso) {
-        int cont = 0;
-        for (Aluno aluno : Aluno.alunos) {
-            if (aluno.idCurso == idCurso) {
-                cont++;
-            }
-        }
-        return cont;
-    }
-}
+//     static int contarAlunosPorCurso(int idCurso) {
+//         int cont = 0;
+//         for (Aluno aluno : Aluno.alunos) {
+//             if (aluno.idCurso == idCurso) {
+//                 cont++;
+//             }
+//         }
+//         return cont;
+//     }
+// }

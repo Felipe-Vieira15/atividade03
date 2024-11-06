@@ -10,8 +10,6 @@ public class Aluno {
 
     Curso curso;
 
-    static ArrayList<Aluno> alunos = new ArrayList<>();
-
     public Aluno(int idAluno, String nomeAluno, String dt_nasc, String CPF, Curso curso) {
         this.idAluno = idAluno;
         this.nomeAluno = nomeAluno;
